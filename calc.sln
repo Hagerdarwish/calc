@@ -28,8 +28,7 @@ namespace calc
             }
 
             else if (Y == "*")
-            {
-                Console.WriteLine(int.Parse(X) * int.Parse(i));
+            { Console.WriteLine(int.Parse(X) * int.Parse(i));
 
             }
 
@@ -38,7 +37,11 @@ namespace calc
             else
 
                 Console.WriteLine("error");
-          //  -------------------------------------------------------------------------------------------
+                
+                
+          //  anthor solution -------------------------------------------------------------------------------------------
+          
+          
             Console.WriteLine("enter the first number");
             string x;
             x = Console.ReadLine();
