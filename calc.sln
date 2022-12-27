@@ -1,25 +1,101 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.4.33205.214
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "calc", "calc\calc.csproj", "{1E1F5700-4436-40EA-B01A-7D7BABF8B203}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1E1F5700-4436-40EA-B01A-7D7BABF8B203}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1E1F5700-4436-40EA-B01A-7D7BABF8B203}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1E1F5700-4436-40EA-B01A-7D7BABF8B203}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1E1F5700-4436-40EA-B01A-7D7BABF8B203}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {2FEB288F-E9D7-44DE-95EF-CACB320DFD62}
-	EndGlobalSection
-EndGlobal
+
+namespace calc
+{
+    class program
+    {
+        static void Main(string[] args)
+
+        {
+
+            Console.WriteLine("hello ^_^ write your first number");
+            string X;
+            X = Console.ReadLine();
+
+            Console.WriteLine("choose the operator");
+
+            string Y = Console.ReadLine();
+
+            Console.WriteLine("choose the the 2 no.");
+            string i = Console.ReadLine();
+            if (Y == "+")
+            {
+                Console.WriteLine(int.Parse(X) + int.Parse(i));
+            }
+            else if (Y == "/")
+            {
+                Console.WriteLine(int.Parse(X) / int.Parse(i));
+
+            }
+
+            else if (Y == "*")
+            {
+                Console.WriteLine(int.Parse(X) * int.Parse(i));
+
+            }
+
+            else if (Y == "-")
+                Console.WriteLine(int.Parse(X) - int.Parse(i));
+            else
+
+                Console.WriteLine("error");
+          //  -------------------------------------------------------------------------------------------
+            Console.WriteLine("enter the first number");
+            string x;
+            x = Console.ReadLine();
+            Console.WriteLine("enter the second number");
+            string y;
+            y = Console.ReadLine();
+            Console.WriteLine("enter the operator");
+            string z;
+            z = Console.ReadLine();
+
+            if (z == "+")
+            {
+                int fun = function(int.Parse(x), int.Parse(y));
+                Console.WriteLine(fun);
+            }
+            else if (z == "-")
+            {
+                int fun2 = function2(int.Parse(x), int.Parse(y));
+                Console.WriteLine(fun2);
+            }
+            else if (z == "/")
+            {
+                int fun3 = function3(int.Parse(x), int.Parse(y));
+                Console.WriteLine(fun3);
+            }
+            else if (z == "*")
+            {
+                int fun4 = function4(int.Parse(x), int.Parse(y));
+                Console.WriteLine(fun4);
+            }
+            else Console.WriteLine("error");
+        }
+
+        static int function(int x, int y)
+
+        {
+
+            return x + y;
+        }
+        static int function2(int x, int y)
+
+        {
+
+            return x - y;
+        }
+        static int function3(int x, int y)
+
+        {
+
+            return x / y;
+        }
+        static int function4(int x, int y)
+
+        {
+
+            return x * y;
+        }
+
+    }
+}
