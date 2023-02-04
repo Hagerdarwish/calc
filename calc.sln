@@ -1,104 +1,77 @@
 
-namespace calc
+using System.Security.Cryptography.X509Certificates;
+using System;
+using System.Runtime.ConstrainedExecution;
+using System.Diagnostics.CodeAnalysis;
+
+namespace peoblemSolving
+
 {
+
+
+
     class program
     {
         static void Main(string[] args)
 
         {
-
-            Console.WriteLine("hello ^_^ write your first number");
-            string X;
-            X = Console.ReadLine();
-
-            Console.WriteLine("choose the operator");
-
-            string Y = Console.ReadLine();
-
-            Console.WriteLine("choose the the 2 no.");
-            string i = Console.ReadLine();
-            if (Y == "+")
+            static float GetNumber(string message = "Please enter a number:")
             {
-                Console.WriteLine(int.Parse(X) + int.Parse(i));
+            readNumber:
+                Console.WriteLine(message);
+                if (float.TryParse(Console.ReadLine(), out float x))
+                    return x;
+
+                Console.WriteLine("invaled .. please enter numbers only TRY AGAIN ");
+                goto readNumber;
             }
-            else if (Y == "/")
+        Start:
+
+            var x = GetNumber("Please enter the first number: ");
+
+        here:
+            Console.WriteLine("please enter the operatation +,/,-.*,=");
+            char c = Convert.ToChar(Console.ReadLine());
+            if (c == '=') { Console.WriteLine("the final result is" + " "+x); }
+            var y = GetNumber();
+
+            switch (c)
             {
-                Console.WriteLine(int.Parse(X) / int.Parse(i));
+                case '+':
 
+                    Console.WriteLine(x = x + y);
+
+                    goto here;
+
+                    break;
+                case '-':
+                    Console.WriteLine(x = x - y);
+                    goto here;
+                    break;
+                case '/':
+                    if (y == 0)
+                        throw new DivideByZeroException();
+
+                    Console.WriteLine(x = x / y);
+                    goto here;
+                    break;
+                case '*':
+                    Console.WriteLine(x = x * y);
+                    goto here;
+                    break;
+
+                case '=':
+
+
+                    break;
+                default:
+                    Console.WriteLine("error");
+                    x = 0;
+
+                    break;
             }
 
-            else if (Y == "*")
-            { Console.WriteLine(int.Parse(X) * int.Parse(i));
 
-            }
-
-            else if (Y == "-")
-                Console.WriteLine(int.Parse(X) - int.Parse(i));
-            else
-
-                Console.WriteLine("error");
-                
-                
-          //  anthor solution -------------------------------------------------------------------------------------------
-          
-          
-            Console.WriteLine("enter the first number");
-            string x;
-            x = Console.ReadLine();
-            Console.WriteLine("enter the second number");
-            string y;
-            y = Console.ReadLine();
-            Console.WriteLine("enter the operator");
-            string z;
-            z = Console.ReadLine();
-
-            if (z == "+")
-            {
-                int fun = function(int.Parse(x), int.Parse(y));
-                Console.WriteLine(fun);
-            }
-            else if (z == "-")
-            {
-                int fun2 = function2(int.Parse(x), int.Parse(y));
-                Console.WriteLine(fun2);
-            }
-            else if (z == "/")
-            {
-                int fun3 = function3(int.Parse(x), int.Parse(y));
-                Console.WriteLine(fun3);
-            }
-            else if (z == "*")
-            {
-                int fun4 = function4(int.Parse(x), int.Parse(y));
-                Console.WriteLine(fun4);
-            }
-            else Console.WriteLine("error");
         }
-
-        static int function(int x, int y)
-
-        {
-
-            return x + y;
-        }
-        static int function2(int x, int y)
-
-        {
-
-            return x - y;
-        }
-        static int function3(int x, int y)
-
-        {
-
-            return x / y;
-        }
-        static int function4(int x, int y)
-
-        {
-
-            return x * y;
-        }
-
     }
 }
