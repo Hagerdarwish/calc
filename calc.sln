@@ -1,75 +1,68 @@
 namespace peoblemSolving
 
 {
-     class calc
+     class numbers
     {
 
         public float GetNumber()
         {
-            Console.WriteLine("\"Please enter the FIRST number: \"");
-            
+            Console.WriteLine("\"Please enter the number: \"");
+
         readNumber:
-            
+
             if (float.TryParse(Console.ReadLine(), out float x))
                 return x;
 
             Console.WriteLine("invaled .. please enter numbers only TRY AGAIN ");
             goto readNumber;
         }
-
-        public float GetNumber2()
-        {
-            Console.WriteLine("\"Please enter the SECOND number: \"");
-            
-        readNumber:
-            ;
-            if (float.TryParse(Console.ReadLine(),  out float y))
-                return y;
-
-            Console.WriteLine("invaled .. please enter numbers only TRY AGAIN ");
-            goto readNumber;
         }
-            public void operation()
+
+        class calc:numbers
+    {
+          public void operation()
             {
             start:
             float x = GetNumber();
+      
+            Console.WriteLine("please enter the operatation\n + ---> for sum \n/----> divided\n - ---->minus\n *--->multibly\n = ----> for final result\n0 ----> to start new calculation ");
         here:
-                Console.WriteLine("please enter the operatation +,/,-.*,=");
-                char c = Convert.ToChar(Console.ReadLine());
+            Console.WriteLine("please enter the operatation + ,/,-.*,=,0");
+            char c = Convert.ToChar(Console.ReadLine());
+      
             switch (c)
                 {
                     case '+':
-                    float y = GetNumber2();
+                    float y = GetNumber();
                     Console.WriteLine(x += y);
-
                         goto here;
-
                         break;
+                        
                 case '-':
-                     y = GetNumber2();
+                     y = GetNumber();
                     Console.WriteLine(x = x - y);
                     goto here;
                     break;
+                    
                 case '/':
-                    y = GetNumber2();
+                    y = GetNumber();
                     if (y == 0)
                     throw new DivideByZeroException();
                    
                     Console.WriteLine(x = x / y);
                     goto here;
                     break;
+                    
                 case '*':
-                     y = GetNumber2();
+                     y = GetNumber();
                     Console.WriteLine(x = x * y);
                     goto here;
                     break;
 
                 case '=':
-
-                    Console.WriteLine(x);
-                    goto start;
+                    Console.WriteLine(x); 
                     break;
-
+                    
                 case '0':
                     goto start;
                     break;
@@ -77,12 +70,11 @@ namespace peoblemSolving
                 default:
                     Console.WriteLine("error");
                     x = 0;
-
                     break;
-            }   
-        }
-
-    }//class
+            }
+           
+        }  
+        }//class
     
 
     class program
