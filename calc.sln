@@ -1,77 +1,99 @@
-
-using System.Security.Cryptography.X509Certificates;
-using System;
-using System.Runtime.ConstrainedExecution;
-using System.Diagnostics.CodeAnalysis;
-
 namespace peoblemSolving
 
 {
-
-
-
-    class program
+     class calc
     {
-        static void Main(string[] args)
 
+        public float GetNumber()
         {
-            static float GetNumber(string message = "Please enter a number:")
+            Console.WriteLine("\"Please enter the FIRST number: \"");
+            
+        readNumber:
+            
+            if (float.TryParse(Console.ReadLine(), out float x))
+                return x;
+
+            Console.WriteLine("invaled .. please enter numbers only TRY AGAIN ");
+            goto readNumber;
+        }
+
+        public float GetNumber2()
+        {
+            Console.WriteLine("\"Please enter the SECOND number: \"");
+            
+        readNumber:
+            ;
+            if (float.TryParse(Console.ReadLine(),  out float y))
+                return y;
+
+            Console.WriteLine("invaled .. please enter numbers only TRY AGAIN ");
+            goto readNumber;
+        }
+            public void operation()
             {
-            readNumber:
-                Console.WriteLine(message);
-                if (float.TryParse(Console.ReadLine(), out float x))
-                    return x;
-
-                Console.WriteLine("invaled .. please enter numbers only TRY AGAIN ");
-                goto readNumber;
-            }
-        Start:
-
-            var x = GetNumber("Please enter the first number: ");
-
+            start:
+            float x = GetNumber();
         here:
-            Console.WriteLine("please enter the operatation +,/,-.*,=");
-            char c = Convert.ToChar(Console.ReadLine());
-            if (c == '=') { Console.WriteLine("the final result is" + " "+x); }
-            var y = GetNumber();
-
+                Console.WriteLine("please enter the operatation +,/,-.*,=");
+                char c = Convert.ToChar(Console.ReadLine());
             switch (c)
-            {
-                case '+':
+                {
+                    case '+':
+                    float y = GetNumber2();
+                    Console.WriteLine(x += y);
 
-                    Console.WriteLine(x = x + y);
+                        goto here;
 
-                    goto here;
-
-                    break;
+                        break;
                 case '-':
+                     y = GetNumber2();
                     Console.WriteLine(x = x - y);
                     goto here;
                     break;
                 case '/':
+                    y = GetNumber2();
                     if (y == 0)
-                        throw new DivideByZeroException();
-
+                    throw new DivideByZeroException();
+                   
                     Console.WriteLine(x = x / y);
                     goto here;
                     break;
                 case '*':
+                     y = GetNumber2();
                     Console.WriteLine(x = x * y);
                     goto here;
                     break;
 
                 case '=':
 
-
+                    Console.WriteLine(x);
+                    goto start;
                     break;
+
+                case '0':
+                    goto start;
+                    break;
+
                 default:
                     Console.WriteLine("error");
                     x = 0;
 
                     break;
-            }
+            }   
+        }
 
+    }//class
+    
+
+    class program
+    {
+        static void Main(string[] args)
+        {
+            calc x = new calc();
+            
+            x.operation();
 
         }
+                
     }
 }
