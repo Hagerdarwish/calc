@@ -75,7 +75,72 @@ namespace calculator
            
         }  
         }//class
-    
+    //--------------------------------------------------------
+       class calculator
+    {
+        float x, y;
+        char c;
+
+
+        float calc(float x)
+        {
+            Console.WriteLine("write a number");
+            while (!float.TryParse(Console.ReadLine(), out x))
+            {
+                Console.WriteLine("try again number is not correct\n");
+                calc(x);
+            }
+            return x;
+        }
+        char character(char c)
+        {
+            Console.WriteLine("write a operation");
+            while (!char.TryParse(Console.ReadLine(), out c))
+            {
+                Console.WriteLine("try again operation is not correct\n");
+            }
+            return c;
+        }
+        public void operation()
+        {
+            float X, Y;
+        start:
+            X = calc(x);
+        here:
+            char C = character(c);
+
+            switch (C)
+            {
+                case '+':
+                    Y = calc(y);
+                    Console.WriteLine(X += Y);
+                    goto here;
+                    break;
+                case '-':
+                    Y = calc(y);
+                    Console.WriteLine(X -= Y);
+                    goto here;
+                    break;
+                case '/':
+                    Y = calc(y);
+                    Console.WriteLine(X /= Y);
+                    goto here;
+                    break;
+                case '*':
+                    Y = calc(y);
+                    Console.WriteLine(X *= Y);
+                    goto here;
+                    break;
+                case '=':
+                    Console.WriteLine(X);
+                    goto start;
+                    break;
+
+            }
+
+
+           }
+       }
 
     class program
     {
